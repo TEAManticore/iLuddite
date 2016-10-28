@@ -23,7 +23,7 @@ const ProfileQueue = React.createClass({
       return (
           <DropdownButton title="Queue" className="droppy">
             <Masonry
-                className={'my-gallery-class'} // default ''
+                className={'my-gallery-class unordered-drop-down'} // default ''
                 elementType={'ul'} // default 'div'
                 options={masonryOptions} // default {}
                 disableImagesLoaded={false} // default false

@@ -22,7 +22,7 @@ const profileFavorites = props.favorites.slice(0, 6).map((book, idx) => {
   return(
     <DropdownButton title="Favorites" className="droppy">
       <Masonry
-          className={'my-gallery-class'} // default ''
+          className={'my-gallery-class unordered-drop-down'} // default ''
           elementType={'ul'} // default 'div'
           options={masonryOptions} // default {}
           disableImagesLoaded={false} // default false

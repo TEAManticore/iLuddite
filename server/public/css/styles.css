@@ -509,7 +509,7 @@ nav span.glyphicon.glyphicon-search {
 .preview6 {
   width: 600px;
   height: 700px;
-
+}
 
 .menu-hold {
    position: relative;
@@ -520,4 +520,8 @@ nav span.glyphicon.glyphicon-search {
 }
 .dropdown.btn-group {
  position: initial;
+}
+
+.unordered-drop-down {
+  list-style-type: none;
 }
