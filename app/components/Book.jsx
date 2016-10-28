@@ -16,12 +16,6 @@ class Book extends React.Component {
       loggedInUser: {},
       showPreview: false
     }
-    setInterval(() => {
-      var shuffled = this.state.reviews.sort(() => .5 - Math.random())  
-      this.setState({
-        currReviews: shuffled.slice(0,2)
-      })
-    }, 5000)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -37,9 +31,8 @@ class Book extends React.Component {
   }
 
   componentDidMount () {
-    // this.setState({
-    //   loggedInUser: this.props.loggedInUser
-    // })
+    
+    this.switchReviews()
     
     axios.get('/loggedin')
     .then(response => {
@@ -81,14 +74,6 @@ class Book extends React.Component {
           console.log('review 2: ', response) 
         })
     })
-    
-      
-    
-
-    
-
-    
-    
 
     // clear out any search results that might still
     // be showing (this is kinda hacky and probably
@@ -122,6 +107,25 @@ class Book extends React.Component {
           });
         });
     }
+  }
+
+  switchReviews(){
+    var rev1 = 0
+    var rev2 = 1
+
+    setInterval(() => {
+      
+      rev1 > this.state.reviews.length - 1 ? rev1 = 0 : rev1+= 2
+      rev2 > this.state.reviews.length - 1 ? rev2 = 1 : rev2+= 2
+
+      if (rev1 === rev2) rev2++
+
+      var currRevSet = [this.state.reviews[rev1], this.state.reviews[rev2]]
+
+      this.setState({
+        currReviews: currRevSet
+      })
+    }, 4000)
   }
 
   handleSubmit(e){
