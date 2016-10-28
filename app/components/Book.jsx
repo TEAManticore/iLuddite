@@ -16,6 +16,13 @@ class Book extends React.Component {
       loggedInUser: {},
       showPreview: false
     }
+
+    setInterval(() => {
+      var shuffled = this.state.reviews.sort(() => .5 - Math.random())
+      this.setState({
+        currReviews: shuffled.slice(0,2)
+      })
+    }, 5000)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -31,9 +38,9 @@ class Book extends React.Component {
   }
 
   componentDidMount () {
-    
+
     this.switchReviews()
-    
+
     axios.get('/loggedin')
     .then(response => {
       console.log('loggedInUser #1 ',response.data)
@@ -45,7 +52,7 @@ class Book extends React.Component {
       let alreadyQueued = this.state.loggedInUser.queue.map(book => book._id)
 
       let alreadyRead = this.state.loggedInUser.pastReads.map(book => book._id)
-      
+
       let alreadyFavorite = this.state.loggedInUser.favorites.map(book =>book._id)
 
       if (alreadyQueued.includes(this.props.params.bookid)) {
@@ -59,7 +66,7 @@ class Book extends React.Component {
       if (alreadyRead.includes(this.props.params.bookid)) {
         document.getElementById("addBookToPastReadsButton").classList.add("hide-button")
       }
-      
+
       if (alreadyFavorite.includes(this.props.params.bookid)) {
         document.getElementById("addBookToFavoritesButton").classList.add("hide-button")
       }
@@ -71,7 +78,7 @@ class Book extends React.Component {
             reviews: response.data,
             currReviews: [response.data[0], response.data[1]]
           })
-          console.log('review 2: ', response) 
+          console.log('review 2: ', response)
         })
     })
 
@@ -114,7 +121,7 @@ class Book extends React.Component {
     var rev2 = 1
 
     setInterval(() => {
-      
+
       rev1 > this.state.reviews.length - 1 ? rev1 = 0 : rev1+= 2
       rev2 > this.state.reviews.length - 1 ? rev2 = 1 : rev2+= 2
 
@@ -154,11 +161,11 @@ class Book extends React.Component {
     e.preventDefault()
     if (this.state.rating < 5) {
       this.setState({
-        rating: this.state.rating + 1 
+        rating: this.state.rating + 1
       })
     } else if (this.state.rating === 5) {
       this.setState({
-        rating: 0 
+        rating: 0
       })
     }
   }
@@ -186,6 +193,40 @@ class Book extends React.Component {
           <div className="bookRow">
             <div className="bookCol col-md-6">
               <img className="bookImg" src={this.state.book.thumbnailPath}/>
+              <button
+                className="btn btn-default btn-info" role="button"
+                onClick={addBookToQueue.bind(null, this.state.book._id)}
+                id="addBookToQueueButton"
+              >
+                Add to Queue
+              </button>
+              <button
+                className="btn btn-default btn-info" role="button"
+                onClick={makeCurrentBook.bind(null, this.state.book._id)}
+                id="addBookToCurrentButton"
+              >
+                Make my Current
+              </button>
+              <button
+                className="btn btn-default btn-info" role="button"
+                onClick={addBookToFavorites.bind(null, this.state.book._id)}
+                id="addBookToFavoritesButton"
+              >
+              Add to Favorites
+              </button>
+              <button
+                className="btn btn-default btn-info" role="button"
+                onClick={addBookToPastReads.bind(null, this.state.book._id)}
+                id="addBookToPastReadsButton"
+              >
+              Add to Past Reads
+              </button>
+              { this.state.showPreview ?
+                <Preview bookid={this.state.book._id}/> : null
+              }
+              <button className='btn btn-default btn-info'
+              onClick={this.togglePreview.bind(this)}>
+              Toggle Preview </button>
             </div>
 
             <div className="bookCol2 col-md-6">
@@ -202,54 +243,17 @@ class Book extends React.Component {
               </h3>
               <h4>About the Book</h4>
               <p>{this.state.book.summary}</p>
-              <br/>
-              <div>
-                <button
-                  className="btn btn-default btn-info" role="button"
-                  onClick={addBookToQueue.bind(null, this.state.book._id)}
-                  id="addBookToQueueButton"
-                >
-                  Add to Queue
-                </button>
-                <button
-                  className="btn btn-default btn-info" role="button"
-                  onClick={makeCurrentBook.bind(null, this.state.book._id)}
-                  id="addBookToCurrentButton"
-                >
-                  Make my Current
-                </button>
-                <button
-                  className="btn btn-default btn-info" role="button"
-                  onClick={addBookToFavorites.bind(null, this.state.book._id)}
-                  id="addBookToFavoritesButton"
-                >
-                Add to Favorites
-                </button>
-                <button
-                  className="btn btn-default btn-info" role="button"
-                  onClick={addBookToPastReads.bind(null, this.state.book._id)}
-                  id="addBookToPastReadsButton"
-                >
-                Add to Past Reads
-                </button>
-                { this.state.showPreview ?
-                  <Preview bookid={this.state.book._id}/> : null 
-                }
-                <button className='btn btn-default btn-info' 
-                onClick={this.togglePreview.bind(this)}> 
-                Toggle Preview </button>
             </div>
-          </div>
-          <div className="reviewRow">
-            <Review currReviews={this.state.currReviews}
+            <div className="col-md-12 bookCol2">
+              <Review currReviews={this.state.currReviews}
               handleChange={this.handleChange.bind(this)}
               handleSubmit={this.handleSubmit.bind(this)}
               incRating={this.incRating.bind(this)}
               rating={this.state.rating}
               text={this.state.makeRev} />
+            </div>
           </div>
-        </div>
-      </div>  
+      </div>
       )
     }
   }
