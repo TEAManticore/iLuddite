@@ -2,11 +2,6 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.bodyWrap {
-  max-width: 1000px;
-  margin: auto;
-}
-
 .navbarWrap {
   max-width: 1000px;
   margin: auto;
