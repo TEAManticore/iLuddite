@@ -22,7 +22,7 @@ const profilePastReads = props.pastReads.slice(0, 6).map((book, idx) => {
   return(
     <DropdownButton title="Past Reads" className="droppy">
       <Masonry
-          className={'my-gallery-class'} // default ''
+          className={'my-gallery-class unordered-drop-down'} // default ''
           elementType={'ul'} // default 'div'
           options={masonryOptions} // default {}
           disableImagesLoaded={false} // default false

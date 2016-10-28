@@ -526,3 +526,7 @@ nav span.glyphicon.glyphicon-search {
 .dropdown.btn-group {
  position: initial;
 }
+
+.unordered-drop-down {
+  list-style-type: none;
+}
