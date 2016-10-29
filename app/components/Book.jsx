@@ -208,9 +208,6 @@ class Book extends React.Component {
                   >
                   Add to Past Reads
                   </button>
-                  { this.state.showPreview ?
-                    <Preview bookid={this.state.book._id}/> : null
-                  }
                 </div>
                 <div className="col-md-12">
                   <button className='btn btn-default btn-info'
@@ -220,7 +217,9 @@ class Book extends React.Component {
                 </div>
               </div>
             </div>
-
+            { this.state.showPreview ?
+              <Preview bookid={this.state.book._id}/> : null
+            }
             <div className="bookCol2 col-md-4">
               <h2>{this.state.book.title}</h2>
 
