@@ -10,12 +10,12 @@ var masonryOptions = {
 const ProfilePastReads = (props) => {
 // since the queue could get really long we only want to display up to 6 books
   let leng;
-  if(this.props.bookQueue.length < 7){
+  if(props.pastReads.length < 6){
     leng = 0
   }else{
-    leng = this.props.bookQueue.length - 6
+    leng = props.pastReads.length - 6
   }
-const profilePastReads = props.pastReads.slice(leng, 6).map((book, idx) => {
+const profilePastReads = props.pastReads.slice(leng, props.pastReads.length).map((book, idx) => {
     return (
       <li className="image-element-class">
         <Link to={`/books/${book._id}`}>

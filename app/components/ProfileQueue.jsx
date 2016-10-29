@@ -10,13 +10,13 @@ var masonryOptions = {
 const ProfileQueue = React.createClass({
 
     render: function () {
-      let leng;
-      if(this.props.bookQueue.length < 7){
+      let leng
+      if(this.props.bookQueue.length < 6){
         leng = 0
       }else{
         leng = this.props.bookQueue.length - 6
       }
-      const profileQueue = this.props.bookQueue.slice(leng, 6).map((book, idx) => {
+      const profileQueue = this.props.bookQueue.slice(leng, this.props.bookQueue.length).map((book, idx) => {
         return (
           <li className="image-element-class">
             <Link to={`/books/${book._id}`}>

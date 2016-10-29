@@ -10,12 +10,12 @@ var masonryOptions = {
 const ProfileFavorites = (props) => {
 // since the queue could get really long we only want to display up to 6 books
   let leng;
-  if(this.props.bookQueue.length < 7){
+  if(props.favorites.length < 6){
     leng = 0
   }else{
-    leng = this.props.bookQueue.length - 6
+    leng = props.favorites.length - 6
   }
-  const profileFavorites = props.favorites.slice(leng, 6).map((book, idx) => {
+  const profileFavorites = props.favorites.slice(leng, props.favorites.length).map((book, idx) => {
     return (
       <li className="image-element-class">
         <Link to={`/books/${book._id}`}>
