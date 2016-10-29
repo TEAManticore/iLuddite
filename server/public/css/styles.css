@@ -611,7 +611,7 @@ input.reviewForm::placeholder{
 }
 
 .list-group-item {
-  background-color: #337ab7;
-  color: white;
+  background-color: white;
+  color: #337ab7;
   border: none;
 }
