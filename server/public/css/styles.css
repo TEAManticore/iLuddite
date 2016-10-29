@@ -588,6 +588,12 @@ input.reviewForm::placeholder{
 }
 
 .list-group-item {
+  background-color: #337ab7;
+  color: white;
+  border: none;
+}
+
+.search-list-item {
   color: #337ab7;
   background-color: white;
   border: none;
