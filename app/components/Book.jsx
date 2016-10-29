@@ -113,7 +113,7 @@ class Book extends React.Component {
     setInterval(() => {
       var shuffled = this.state.reviews.sort(() => .5 - Math.random())  
       this.setState({
-        currReviews: shuffled.slice(0,2)
+        currReviews: shuffled.slice(0,3)
       })
     }, 4000)
   }
