@@ -218,9 +218,6 @@ class Book extends React.Component {
                   </div>
                 </div>
                 <div className="col-md-12">
-                { this.state.showPreview ?
-                    <Preview bookid={this.state.book._id}/> : null
-                  }
                   <button className='btn btn-default btn-info'
                   onClick={this.togglePreview.bind(this)}>
                   Toggle Preview
