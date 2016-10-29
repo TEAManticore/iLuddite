@@ -2,6 +2,13 @@ const React = require('react');
 import { Link } from 'react-router';
 
 const SearchListItem = (props) => {
+
+  const hideButton = (e) => {
+    let toHide = e.target
+    console.log(toHide)
+    toHide.classList.add("hide-button")
+  }
+
   return (
     <li className="search-list-item list-group-item">
       <div className="row">
@@ -20,34 +27,38 @@ const SearchListItem = (props) => {
           
             <button
               className="btn btn-primary"
-              onClick={props.addBookToQueue.bind(null, props.bookid)}
+              onClick={(e) => { props.addBookToQueue.call(null, props.bookid); hideButton(e) }}
+              id="addBookToQueueButton"
             >
               <span className="glyphicon glyphicon-plus">&nbsp;</span>
-              Add to Queue
+              +Queue
             </button>
           
             <button
               className="btn btn-primary"
-              onClick={props.makeCurrentBook.bind(null, props.bookid)}
+              onClick={(e) => { props.makeCurrentBook.call(null, props.bookid); hideButton(e) }}
+              id="addBookToCurrentButton"
             >
               <span className="glyphicon glyphicon-book">&nbsp;</span>
-              Make my Current
+              Make Current
             </button>
           
             <button
               className="btn btn-primary"
-              onClick={props.addBookToPastReads.bind(null, props.bookid)}
+              onClick={(e) => { props.addBookToPastReads.call(null, props.bookid); hideButton(e) }}
+              id="addBookToPastReadsButton"
             >
               <span className="glyphicon glyphicon-book">&nbsp;</span>
-              Add to Past Reads
+              +Past Reads
             </button>
           
             <button
               className="btn btn-primary"
-              onClick={props.addBookToFavorites.bind(null, props.bookid)}
+              onClick={(e) => { props.addBookToFavorites.call(null, props.bookid); hideButton(e) }}
+              id="addBookToFavoritesButton"
             >
               <span className="glyphicon glyphicon-book">&nbsp;</span>
-              Add to Favorites
+              +Favorites
             </button>
          
         </div>

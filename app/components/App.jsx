@@ -98,7 +98,7 @@ class App extends React.Component {
   }
 
   addBookToQueue (isbn) {
-    document.getElementById("addBookToQueueButton").classList.add("hide-button")
+    //document.getElementById("addBookToQueueButton").classList.add("hide-button")
     // check to see if book is already in users queue
     for (let i = 0; i < this.state.loggedInUser.queue.length; i++) {
       if (this.state.loggedInUser.queue[i]._id === isbn) {
@@ -114,11 +114,12 @@ class App extends React.Component {
       this.setState({
         loggedInUser: newState
       })
+      console.log('added')
     })
   }
 
   addBookToPastReads (isbn) {
-    document.getElementById("addBookToPastReadsButton").classList.add("hide-button")
+    //document.getElementById("addBookToPastReadsButton").classList.add("hide-button")
     // check to see if book is already in users pastReads
     for (let i = 0; i < this.state.loggedInUser.pastReads.length; i++) {
       if (this.state.loggedInUser.pastReads[i]._id === isbn) {
@@ -140,8 +141,8 @@ class App extends React.Component {
   }
 
   makeCurrentBook (isbn) {
-    document.getElementById("addBookToCurrentButton").classList.add("hide-button")
-    document.getElementById("addBookToQueueButton").classList.add("hide-button")
+    // document.getElementById("addBookToCurrentButton").classList.add("hide-button")
+    // document.getElementById("addBookToQueueButton").classList.add("hide-button")
     const userid = this.state.loggedInUser.fbid;
     // see if the queue already has the book
     for (let i = 0; i < this.state.loggedInUser.queue.length; i++) {
@@ -216,7 +217,7 @@ class App extends React.Component {
   }
 
   addBookToFavorites (isbn) {
-    document.getElementById("addBookToFavoritesButton").classList.add("hide-button")
+    //document.getElementById("addBookToFavoritesButton").classList.add("hide-button")
     // first make sure book is not already in favorites
     for (let i = 0; i < this.state.loggedInUser.favorites.length; i++) {
       if (this.state.loggedInUser.favorites[i]._id === isbn) {
