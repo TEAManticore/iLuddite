@@ -31,9 +31,9 @@ class Book extends React.Component {
   }
 
   componentDidMount () {
-    
+
     this.switchReviews()
-    
+
     axios.get('/loggedin')
     .then(response => {
       console.log('loggedInUser #1 ',response.data)
@@ -110,20 +110,10 @@ class Book extends React.Component {
   }
 
   switchReviews(){
-    var rev1 = 0
-    var rev2 = 1
-
     setInterval(() => {
-      
-      rev1 > this.state.reviews.length - 1 ? rev1 = 0 : rev1+= 2
-      rev2 > this.state.reviews.length - 1 ? rev2 = 1 : rev2+= 2
-
-      if (rev1 === rev2) rev2++
-
-      var currRevSet = [this.state.reviews[rev1], this.state.reviews[rev2]]
-
+      var shuffled = this.state.reviews.sort(() => .5 - Math.random())  
       this.setState({
-        currReviews: currRevSet
+        currReviews: shuffled.slice(0,2)
       })
     }, 4000)
   }
