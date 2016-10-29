@@ -62,7 +62,7 @@ router.get('/search/:searchterm', (req, res) => {
         request(goodOptions, (err,response,body) => {
           body = xml('' + body, (err, result) => {
             let authorId
-            if (result) {
+            if (result.GoodreadsResponse.author) {
               authorId = result.GoodreadsResponse.author[0].$.id
             } else {
               authorId = 0
