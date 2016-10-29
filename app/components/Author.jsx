@@ -64,8 +64,8 @@ class Author extends React.Component {
             <br/>
           </div>
         </div>
-        <h4 className='listName'>Books By This Author</h4>
         <div className='author-books-list col-md-12'>
+          <h4 className='listName'>Books By This Author</h4>
            {authorBookList}
         </div>
       </div>
