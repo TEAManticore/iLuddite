@@ -1,5 +1,7 @@
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: #337ab7;
+  color:  white;
 }
 
 .navbarWrap {
@@ -8,10 +10,10 @@ body {
 }
 
 .title{
-	color: white;
-	font-size: 30px;
-	padding-left: 50px;
-	padding-top: 30px;
+  color: white;
+  font-size: 30px;
+  padding-left: 50px;
+  padding-top: 30px;
 }
 
 .main-body {
@@ -35,13 +37,13 @@ body {
 }
 
 .intro{
-	padding-top: 80px;
-	opacity: .95;
+  padding-top: 80px;
+  opacity: .95;
 }
 
 
 .header {
-	text-align: center;
+  text-align: center;
 }
 
 .tryout {
@@ -50,17 +52,30 @@ body {
 
 
 .button {
-	padding-top: 10px;
-	text-align: center;
+  padding-top: 10px;
+  text-align: center;
 }
 
 
 /* Navbar styling */
 nav.navbar {
-  height: 50px;
+  height: 70px;
   min-height: 50px;
-  padding-top: 1px;
+  padding-top: 10px;
+  background-color: #337ab7;
+  color:  white;
+  border:  none;
+  border-bottom: 3px solid white;
+  border-radius: none;
+  width: 80%;
+  left: 150px;
 }
+
+nav h3{
+  color: white;
+  margin: 12px 0px;
+}
+
 
 nav {
   text-align: center;
@@ -84,18 +99,33 @@ nav input {
   width: 100%;
   padding-left: 40px;
   font-size: 1em;
+  border-radius:  15px;
+  color: #337ab7;
+}
+
+@media {
+  .navbar {
+    border-radius: 0px;
+  }
+}
+
+.glyphicon-cog:hover {
+  transform: rotate(360deg);
 }
 
 nav .glyphicon-cog {
-  padding-top: 15px;
+  margin-top: 8px;
+  font-size: 30px;
+  color: white;
+  transition: transform 2.5s;
 }
 
 nav span.glyphicon.glyphicon-search {
   position: absolute;
   left: 10px;
   top: 12px;
-  font-size: 20px;
-  color: lightgray;
+  font-size: 24px;
+  color: #337ab7;
 }
 
 .search-box {
@@ -107,11 +137,11 @@ nav span.glyphicon.glyphicon-search {
 /* Search results styling */
 
 .current-button-col {
-	padding: 0 10px 0 0;
+  padding: 0 10px 0 0;
 }
 
 .queue-button-col {
-	padding: 0;
+  padding: 0;
 }
 
 .search-list-item {
@@ -121,13 +151,13 @@ nav span.glyphicon.glyphicon-search {
 
 .search-list-item img {
   max-height: 100px;
-	max-width: 65px;
+  max-width: 65px;
 }
 
 .search-list-item button.btn.btn-primary {
   margin-right: 5px;
   margin-top: 5px;
-	font-size: 10px;
+  font-size: 10px;
 }
 
 .search-list-item h4,
@@ -147,6 +177,10 @@ nav span.glyphicon.glyphicon-search {
     padding-top: 20px;
     padding-bottom: 20px;
   }
+}
+
+.bookContainer a {
+  color: white;
 }
 
 .bookContainer-narrow > hr {
@@ -188,7 +222,8 @@ nav span.glyphicon.glyphicon-search {
 }
 
 .bookPhoto{
-	background-size: 100% 100%;
+  background-size: 100% 100%;
+  margin: 5px;
 }
 
 .currentInfoColumnn {
@@ -279,7 +314,7 @@ nav span.glyphicon.glyphicon-search {
 
 .profilePhoto {
   border-radius: 50%;
-  border:.2em solid #e8e8e8;
+  border: 4px solid white;
 }
 
 .userInfoColumnn {
@@ -360,10 +395,12 @@ nav span.glyphicon.glyphicon-search {
 .friendsPhoto {
   width: 100%;
   max-height: inherit;
+  transition: all .2s ease-in-out; 
 }
 
 .friendsPhoto:hover {
-  opacity: 0.2;
+  /*opacity: 0.2;*/
+  transform: scale(1.1); 
 }
 
 .friendsCurrent {
@@ -401,23 +438,37 @@ nav span.glyphicon.glyphicon-search {
 .reviewForm{
   width: 320px;
   height: 44px;
-  font-size: 32px;
-  border: solid 1px #fff;
-  box-shadow: inset 1px 1px 2px 0 #707070;
-  transition: box-shadow 0.3s;
-  outline: none;
-}
-.reviewForm::placeholder{
   font-size: 24px;
+  outline: none;
+  background-color: #337ab7;
+  border: none;
+  border-bottom: 2px solid white;
 }
+input.reviewForm::placeholder{
+  font-size: 12px;
+  text-decoration-color: white;
+}
+
+.reviewForm:focus {
+  font-size: 24px;
+  outline: none;
+  background-color: #337ab7;
+  border: none;
+  border-bottom: 2px solid white;
+}
+
+.reviewForm::-webkit-input-placeholder { /* Chrome */
+  color: white;
+}
+
 .rateField{
   height: 35px;
   width: 320px;
 }
 .thumbBtn{
   height: 30px;
-  width: 30px;
-  margin: 5px 10px 5px 25px;
+  width: 20px;
+  margin: 10px 10px 5px 25px;
   float: left;
   display: inline block;
 }
@@ -426,7 +477,7 @@ nav span.glyphicon.glyphicon-search {
   width: 200px;
   float: left;
   display: inline;
-  margin: 7px 10px;
+  margin: 12px 10px 5px;
 }
 .reviewBtn{
   width:320px;
@@ -441,6 +492,7 @@ nav span.glyphicon.glyphicon-search {
   height: 55px;
   border-radius: 50%;
   float: left;
+  border: 2px solid white
 }
 .revText{
   display: inline block;
@@ -458,6 +510,7 @@ nav span.glyphicon.glyphicon-search {
 .revRatings img{
   height: 25px;
   width: auto;
+  margin-right: 2px;
 }
 
 .hide-button {
@@ -486,9 +539,10 @@ nav span.glyphicon.glyphicon-search {
   top: 0px;
   position: absolute;
   padding: 8px;
-  border: 1px solid rgb(44, 68, 98);
-  background-color: rgb(180, 207, 254);
+  /* border: 1px solid rgb(44, 68, 98); */
+  background-color: white;
   z-index: 203;
+  border-radius: 5px;
 }
 
 .preview4 {
@@ -516,7 +570,7 @@ nav span.glyphicon.glyphicon-search {
    float: right;
 }
 .bookPhoto:hover {
- opacity: 0.5;
+ opacity: 0.3;
 }
 .dropdown.btn-group {
  position: initial;
@@ -524,4 +578,40 @@ nav span.glyphicon.glyphicon-search {
 
 .unordered-drop-down {
   list-style-type: none;
+}
+
+.droppy{
+  color: white;
+  border-radius: 8px;
+  background-color: #337ab7;
+  border: 3px solid white;
+  margin: 7px;
+  padding: 6px;
+}
+
+.droppy:hover{
+  color: #337ab7;
+  background-color: white;
+  border: 3px solid white;
+}
+
+.btn{
+  color: white;
+  border-radius: 8px;
+  background-color: #337ab7;
+  border: 3px solid white;
+  margin: 7px;
+  padding: 6px;
+}
+
+.btn:hover{
+  color: #337ab7;
+  background-color: white;
+  border: 3px solid white;
+}
+
+.list-group-item {
+  background-color: #337ab7;
+  color: white;
+  border: none;
 }

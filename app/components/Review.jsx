@@ -10,10 +10,10 @@ var Review = ({currReviews, handleSubmit, handleChange, incRating, rating, text}
         <h3>Quick! Your Thoughts?</h3>
         <form>
           <input className="reviewForm" onChange={(e) => handleChange(e)}
-           value={text} placeholder="Make it short..." />
+           value={text} placeholder="(type here)" />
           <div className="rateField">
             <input className= "thumbBtn" type="image" onClick={(e) => incRating(e)}
-             src="http://cliparting.com/wp-content/uploads/2016/06/Facebook-thumbs-up-image-clipart.jpeg" /> 
+             src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Symbol_thumbs_up_white.svg/371px-Symbol_thumbs_up_white.svg.png" /> 
             <div className="rateText">{rating} out of 5 Thumbs Up</div>
           </div>
           <button className="reviewBtn btn btn-info" onClick={(e) => handleSubmit(e)}>ADD REVIEW</button>
@@ -28,7 +28,7 @@ var Review = ({currReviews, handleSubmit, handleChange, incRating, rating, text}
                 <img className="revImage" src={rev.image} />
                 <div className="revRatings">{
                   [...Array(rev.rating)].map(r => 
-                    <img src="http://cliparting.com/wp-content/uploads/2016/06/Facebook-thumbs-up-image-clipart.jpeg"/>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Symbol_thumbs_up_white.svg/371px-Symbol_thumbs_up_white.svg.png"/>
                   )
                 }</div>
                 <h5 className="revText">{rev.content}</h5>
