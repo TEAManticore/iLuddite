@@ -171,12 +171,9 @@ nav span.glyphicon.glyphicon-search {
 }
 
 /* Book View */
-@media (min-width: 768px) {
-  .bookContainer {
-    max-width: 730px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
+.bookContainer {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .bookContainer a {
