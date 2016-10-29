@@ -615,3 +615,8 @@ input.reviewForm::placeholder{
   color: #337ab7;
   border: none;
 }
+
+.currentTitle {
+  font-size: 1.3em;
+  color: white;
+}
