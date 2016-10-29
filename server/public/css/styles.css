@@ -232,11 +232,6 @@ nav span.glyphicon.glyphicon-search {
   padding-bottom: .5em;
 }
 
-.currentTitle {
-  font-size: 1.3em;
-  color: white;
-}
-
 .currentAuthor {
   font-size: 1.1em;
   font-weight: 300;
@@ -520,7 +515,8 @@ input.reviewForm::placeholder{
 .preview1 {
   position: absolute;
   z-index: 201;
-  top: 10px;
+  top: 90px;
+  left: 37%;
 }
 
 .preview2 {
@@ -545,24 +541,9 @@ input.reviewForm::placeholder{
   border-radius: 5px;
 }
 
-.preview4 {
-  background-color: rgb(216, 232, 253);
-  font-size: 16px;
-  font-family: Arial, sans-serif;
-  font-weight: bold;
-  padding: 2px 2px 2px 5px;
-}
-
-.preview5 {
-  cursor: pointer;
-  position: absolute;
-  right: 11px;
-  top: 11px;
-}
-
 .preview6 {
-  width: 600px;
-  height: 700px;
+  width: 720px;
+  height: 720px;
 }
 
 .menu-hold {
@@ -614,4 +595,9 @@ input.reviewForm::placeholder{
   background-color: white;
   color: #337ab7;
   border: none;
+}
+
+.currentTitle a{
+  font-size: 1.3em;
+  color: white;
 }
