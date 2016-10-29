@@ -160,6 +160,12 @@ class Book extends React.Component {
     })
   }
 
+  hideButton(e) {
+    let toHide = e.target
+    console.log(toHide)
+    toHide.classList.add("hide-button")
+  }
+
   render () {
     const { addBookToQueue, addBookToFavorites, makeCurrentBook, addBookToPastReads } = this.props;
 
@@ -181,7 +187,7 @@ class Book extends React.Component {
                   <div className="book-button">
                     <button
                       className="btn btn-default btn-info" role="button"
-                      onClick={addBookToQueue.bind(null, this.state.book._id)}
+                      onClick={(e) => { addBookToQueue.call(null, this.state.book._id); this.hideButton(e) }}
                       id="addBookToQueueButton"
                     >
                       +Queue
@@ -190,7 +196,7 @@ class Book extends React.Component {
                   <div className="book-button">
                     <button
                       className="btn btn-default btn-info" role="button"
-                      onClick={makeCurrentBook.bind(null, this.state.book._id)}
+                      onClick={(e) => { makeCurrentBook.call(null, this.state.book._id); this.hideButton(e) }}
                       id="addBookToCurrentButton"
                     >
                       Make Current
@@ -201,7 +207,7 @@ class Book extends React.Component {
                   <div className="book-button">
                     <button
                       className="btn btn-default btn-info" role="button"
-                      onClick={addBookToFavorites.bind(null, this.state.book._id)}
+                      onClick={(e) => { addBookToFavorites.call(null, this.state.book._id); this.hideButton(e) }}
                       id="addBookToFavoritesButton"
                     >
                     +Favorites
@@ -210,7 +216,7 @@ class Book extends React.Component {
                   <div className="book-button">
                     <button
                       className="btn btn-default btn-info" role="button"
-                      onClick={addBookToPastReads.bind(null, this.state.book._id)}
+                      onClick={(e) => { addBookToPastReads.call(null, this.state.book._id); this.hideButton(e) }}
                       id="addBookToPastReadsButton"
                     >
                     +Past Reads
