@@ -171,12 +171,9 @@ nav span.glyphicon.glyphicon-search {
 }
 
 /* Book View */
-@media (min-width: 768px) {
-  .bookContainer {
-    max-width: 730px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
+.bookContainer {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .bookContainer a {
@@ -430,6 +427,8 @@ nav span.glyphicon.glyphicon-search {
   width: 480px;
 }
 
+
+/* Review */
 .reviewFeed{
   width: 350px;
   height: 140px;
