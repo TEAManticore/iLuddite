@@ -223,6 +223,7 @@ nav span.glyphicon.glyphicon-search {
 
 .bookPhoto{
   background-size: 100% 100%;
+  margin: 5px;
 }
 
 .currentInfoColumnn {
@@ -394,10 +395,12 @@ nav span.glyphicon.glyphicon-search {
 .friendsPhoto {
   width: 100%;
   max-height: inherit;
+  transition: all .2s ease-in-out; 
 }
 
 .friendsPhoto:hover {
-  opacity: 0.2;
+  /*opacity: 0.2;*/
+  transform: scale(1.1); 
 }
 
 .friendsCurrent {
