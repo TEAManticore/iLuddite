@@ -199,11 +199,11 @@ nav span.glyphicon.glyphicon-search {
 }
 
 .book-button {
-
+  
 }
 
 .hide-button {
-  display: none;
+  visibility: hidden;
 }
 
 .currentColumn {
@@ -506,10 +506,6 @@ input.reviewForm::placeholder{
   height: 25px;
   width: auto;
   margin-right: 2px;
-}
-
-.hide-button {
-  display: none;
 }
 
 .preview1 {

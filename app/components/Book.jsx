@@ -178,36 +178,44 @@ class Book extends React.Component {
               <img className="bookImg" src={this.state.book.thumbnailPath}/>
               <div className="book-buttons col-md-12">
                 <div className="col-md-6">
-                  <button
-                    className="btn btn-default btn-info" role="button"
-                    onClick={addBookToQueue.bind(null, this.state.book._id)}
-                    id="addBookToQueueButton"
-                  >
-                    Add to Queue
-                  </button>
-                  <button
-                    className="btn btn-default btn-info" role="button"
-                    onClick={makeCurrentBook.bind(null, this.state.book._id)}
-                    id="addBookToCurrentButton"
-                  >
-                    Make my Current
-                  </button>
+                  <div className="book-button">
+                    <button
+                      className="btn btn-default btn-info" role="button"
+                      onClick={addBookToQueue.bind(null, this.state.book._id)}
+                      id="addBookToQueueButton"
+                    >
+                      +Queue
+                    </button>
+                  </div>
+                  <div className="book-button">
+                    <button
+                      className="btn btn-default btn-info" role="button"
+                      onClick={makeCurrentBook.bind(null, this.state.book._id)}
+                      id="addBookToCurrentButton"
+                    >
+                      Make Current
+                    </button>
+                  </div>
                 </div>
                 <div className="col-md-6">
-                  <button
-                    className="btn btn-default btn-info" role="button"
-                    onClick={addBookToFavorites.bind(null, this.state.book._id)}
-                    id="addBookToFavoritesButton"
-                  >
-                  Add to Favorites
-                  </button>
-                  <button
-                    className="btn btn-default btn-info" role="button"
-                    onClick={addBookToPastReads.bind(null, this.state.book._id)}
-                    id="addBookToPastReadsButton"
-                  >
-                  Add to Past Reads
-                  </button>
+                  <div className="book-button">
+                    <button
+                      className="btn btn-default btn-info" role="button"
+                      onClick={addBookToFavorites.bind(null, this.state.book._id)}
+                      id="addBookToFavoritesButton"
+                    >
+                    +Favorites
+                    </button>
+                  </div>
+                  <div className="book-button">
+                    <button
+                      className="btn btn-default btn-info" role="button"
+                      onClick={addBookToPastReads.bind(null, this.state.book._id)}
+                      id="addBookToPastReadsButton"
+                    >
+                    +Past Reads
+                    </button>
+                  </div>
                 </div>
                 <div className="col-md-12">
                   <button className='btn btn-default btn-info'
