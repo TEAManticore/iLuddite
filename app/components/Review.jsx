@@ -6,7 +6,7 @@ import { browserHistory } from 'react-router';
 var Review = ({currReviews, handleSubmit, handleChange, incRating, rating, text}) => {
   return (
     <div className="reviewContainer">
-      <div className="makeReview col-md-6">
+      <div className="makeReview col-md-12">
         <h3>Quick! Your Thoughts?</h3>
         <form>
           <input className="reviewForm" onChange={(e) => handleChange(e)}
@@ -19,7 +19,7 @@ var Review = ({currReviews, handleSubmit, handleChange, incRating, rating, text}
           <button className="reviewBtn btn btn-info" onClick={(e) => handleSubmit(e)}>ADD REVIEW</button>
         </form>
       </div>
-      <div className="readReview col-md-6">
+      <div className="readReview col-md-12">
         <h3>What Your Friends Thought:</h3>
           <div className="reviewFeed"> 
           { 
