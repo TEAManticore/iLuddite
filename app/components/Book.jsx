@@ -184,40 +184,49 @@ class Book extends React.Component {
           <div className="bookRow">
             <div className="bookCol col-md-4">
               <img className="bookImg" src={this.state.book.thumbnailPath}/>
-              <button
-                className="btn btn-default btn-info" role="button"
-                onClick={addBookToQueue.bind(null, this.state.book._id)}
-                id="addBookToQueueButton"
-              >
-                Add to Queue
-              </button>
-              <button
-                className="btn btn-default btn-info" role="button"
-                onClick={makeCurrentBook.bind(null, this.state.book._id)}
-                id="addBookToCurrentButton"
-              >
-                Make my Current
-              </button>
-              <button
-                className="btn btn-default btn-info" role="button"
-                onClick={addBookToFavorites.bind(null, this.state.book._id)}
-                id="addBookToFavoritesButton"
-              >
-              Add to Favorites
-              </button>
-              <button
-                className="btn btn-default btn-info" role="button"
-                onClick={addBookToPastReads.bind(null, this.state.book._id)}
-                id="addBookToPastReadsButton"
-              >
-              Add to Past Reads
-              </button>
-              { this.state.showPreview ?
-                <Preview bookid={this.state.book._id}/> : null
-              }
-              <button className='btn btn-default btn-info'
-              onClick={this.togglePreview.bind(this)}>
-              Toggle Preview </button>
+              <div className="book-buttons col-md-12">
+                <div className="col-md-6">
+                  <button
+                    className="btn btn-default btn-info" role="button"
+                    onClick={addBookToQueue.bind(null, this.state.book._id)}
+                    id="addBookToQueueButton"
+                  >
+                    Add to Queue
+                  </button>
+                  <button
+                    className="btn btn-default btn-info" role="button"
+                    onClick={makeCurrentBook.bind(null, this.state.book._id)}
+                    id="addBookToCurrentButton"
+                  >
+                    Make my Current
+                  </button>
+                </div>
+                <div className="col-md-6">
+                  <button
+                    className="btn btn-default btn-info" role="button"
+                    onClick={addBookToFavorites.bind(null, this.state.book._id)}
+                    id="addBookToFavoritesButton"
+                  >
+                  Add to Favorites
+                  </button>
+                  <button
+                    className="btn btn-default btn-info" role="button"
+                    onClick={addBookToPastReads.bind(null, this.state.book._id)}
+                    id="addBookToPastReadsButton"
+                  >
+                  Add to Past Reads
+                  </button>
+                  { this.state.showPreview ?
+                    <Preview bookid={this.state.book._id}/> : null
+                  }
+                </div>
+                <div className="col-md-12">
+                  <button className='btn btn-default btn-info'
+                  onClick={this.togglePreview.bind(this)}>
+                  Toggle Preview
+                  </button>
+                </div>
+              </div>
             </div>
 
             <div className="bookCol2 col-md-4">
@@ -235,7 +244,7 @@ class Book extends React.Component {
               <h4>About the Book</h4>
               <p>{this.state.book.summary}</p>
             </div>
-            <div className="col-md-4 bookCol2">
+            <div className="bookCol2 col-md-4">
               <Review currReviews={this.state.currReviews}
               handleChange={this.handleChange.bind(this)}
               handleSubmit={this.handleSubmit.bind(this)}
