@@ -1,7 +1,7 @@
 const OAuth = require('oauth');
 const OAuth2 = OAuth.OAuth2;
 const fbAuth = new OAuth2(
-  '1232935473424015', process.env.FB_SECRET, 'https://graph.facebook.com',
+  process.env.FB_ID, process.env.FB_SECRET, 'https://graph.facebook.com',
   null, 'oauth2/token', null
 );
 
@@ -26,7 +26,7 @@ exports.getFriends = function(userKey, profile, done) {
     `https://graph.facebook.com/${profile}/friends?redirect=false`,
     userKey, (error, results, res) => {
       if (error) {
-        console.log(`getFriends error: ${error}`);
+        console.log("getFriends error", error);
       }
       results = JSON.parse(results);
       done(results.data);

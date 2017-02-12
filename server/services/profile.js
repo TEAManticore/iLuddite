@@ -14,7 +14,6 @@ module.exports = function(req, fbid) {
         // if user is found - pass their fbid to the getFriends function
         try {
         facebook.getFriends(req.user.token, found.fbid, results => {
-
           // convert the found object to a JSON object
           found = found.toJSON();
 
