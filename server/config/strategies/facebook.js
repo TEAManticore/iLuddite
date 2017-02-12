@@ -7,14 +7,14 @@ const facebook = require('../../services/facebook');
 
 module.exports = function() {
   passport.use(new FacebookStrategy({
-    clientID: '1230612180323011',
+    clientID: process.env.FB_ID,
     clientSecret: process.env.FB_SECRET,
     callbackURL: `${process.env.HOST}/auth/return`,
     passReqToCallback: true
   },
   (req, token, refreshToken, profile, done) => {
     let query = {
-      'fbid': profile.id
+      fbid: profile.id
     };
 
     User.findOne(query).then(user => {

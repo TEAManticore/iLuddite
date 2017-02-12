@@ -17,22 +17,20 @@ class App extends React.Component {
   componentDidMount () {
     // When app mounts check to see if it has a logged in user,
     // if it does then send them to the profile component
-    if (this.state.loggedInUser.fbid) {
-      const path = `/users/${this.state.loggedInUser.fbid}`;
-      browserHistory.push(path);
-    } else {
-      // component doesn't have a logged in user send request to server to
-      // get the loggedIn user information
       axios.get('/loggedin')
         .then((response) => {
           this.setState({
             loggedInUser: response.data
           });
-          console.log(response)
-          const path = `/users/${this.state.loggedInUser.fbid}`;
-          browserHistory.push(path);
+          console.log('loggedInUser: ',this.state.loggedInUser)
+          var path
+          if (window.location.href === 'http://localhost:3000/#_=_' || window.location.href === 'http://localhost:3000/') {
+            path = `/users/${this.state.loggedInUser.fbid}`;
+          } else{
+            path = window.location.href
+          }
+            browserHistory.push(path);
         });
-    }
   }
 
   render () {
@@ -51,10 +49,7 @@ class App extends React.Component {
           addBookToFavorites={this.addBookToFavorites.bind(this)}
           makeCurrentBook={this.makeCurrentBook.bind(this)}
         />
-        <div
-          className="container"
-
-        >
+        <div className="container">
           {this.renderChildrenWithProps()}
         </div>
       </div>
@@ -71,7 +66,7 @@ class App extends React.Component {
 
   // uses the navbarSearchText to do an api call and search for a book.
   searchForBook () {
-    axios.get(`/books/search/${this.state.navbarSearchText}`)
+    axios.get(`/api/books/search/${this.state.navbarSearchText}`)
       .then(response => {
         this.setState({
           navbarSearchResults: response.data
@@ -92,7 +87,7 @@ class App extends React.Component {
     // go through current queue and filter out isbn
     const filtered =
       this.state.loggedInUser.queue.filter(book => book._id !== isbn);
-    axios.delete(`/users/${this.state.loggedInUser.fbid}/queue/${isbn}`)
+    axios.delete(`/api/users/${this.state.loggedInUser.fbid}/queue/${isbn}`)
       .then(book => {
         const newState = Object.assign({}, this.state.loggedInUser);
         newState.queue = filtered;
@@ -103,6 +98,7 @@ class App extends React.Component {
   }
 
   addBookToQueue (isbn) {
+    //document.getElementById("addBookToQueueButton").classList.add("hide-button")
     // check to see if book is already in users queue
     for (let i = 0; i < this.state.loggedInUser.queue.length; i++) {
       if (this.state.loggedInUser.queue[i]._id === isbn) {
@@ -111,17 +107,19 @@ class App extends React.Component {
       }
     }
     // book is not in queue go ahead and add
-    axios.post(`/users/${this.state.loggedInUser.fbid}/queue/${isbn}`)
+    axios.post(`/api/users/${this.state.loggedInUser.fbid}/queue/${isbn}`)
     .then( response => {
       const newState = Object.assign({}, this.state.loggedInUser);
       newState.queue = newState.queue.concat(response.data);
       this.setState({
         loggedInUser: newState
       })
+      console.log('added')
     })
   }
 
   addBookToPastReads (isbn) {
+    //document.getElementById("addBookToPastReadsButton").classList.add("hide-button")
     // check to see if book is already in users pastReads
     for (let i = 0; i < this.state.loggedInUser.pastReads.length; i++) {
       if (this.state.loggedInUser.pastReads[i]._id === isbn) {
@@ -131,7 +129,7 @@ class App extends React.Component {
     }
     // book is not in pastReads go ahead and add
 
-    axios.post(`/users/${this.state.loggedInUser.fbid}/pastReads/${isbn}`)
+    axios.post(`/api/users/${this.state.loggedInUser.fbid}/pastReads/${isbn}`)
     .then( response => {
       console.log('RESPONSE: ', response)
       const newState = Object.assign({}, this.state.loggedInUser);
@@ -143,15 +141,17 @@ class App extends React.Component {
   }
 
   makeCurrentBook (isbn) {
+    // document.getElementById("addBookToCurrentButton").classList.add("hide-button")
+    // document.getElementById("addBookToQueueButton").classList.add("hide-button")
     const userid = this.state.loggedInUser.fbid;
     // see if the queue already has the book
     for (let i = 0; i < this.state.loggedInUser.queue.length; i++) {
       if (this.state.loggedInUser.queue[i]._id === isbn) {
         // if we find the book delete it and then add it at the front
-        axios.delete(`/users/${userid}/queue/${isbn}`)
+        axios.delete(`/api/users/${userid}/queue/${isbn}`)
           // on success of deleting send an add to queue query
           .then(deleted => {
-            return axios.post(`/users/${userid}/queue/${isbn}?current=true`)
+            return axios.post(`/api/users/${userid}/queue/${isbn}?current=true`)
           })
           .then(added => {
             const book = added.data;
@@ -172,7 +172,7 @@ class App extends React.Component {
       }
     }
     // book wasn't already in the queue so it needs to be added.
-    axios.post(`/users/${userid}/queue/${isbn}?current=true`)
+    axios.post(`/api/users/${userid}/queue/${isbn}?current=true`)
     .then( book => {
       book = book.data
       const newState = Object.assign({}, this.state.loggedInUser);
@@ -186,7 +186,7 @@ class App extends React.Component {
   removeBookFromFavorites (isbn) {
     // removesBookFromFavorites
     const loggedInUser = this.state.loggedInUser;
-    axios.delete(`/users/${loggedInUser.fbid}/favorites/${isbn}`)
+    axios.delete(`/api/users/${loggedInUser.fbid}/favorites/${isbn}`)
       .then(deleted => {
         const filtered = loggedInUser.favorites.filter(book => {
           return book._id !== isbn;
@@ -203,7 +203,7 @@ class App extends React.Component {
   removeBookFromPastReads (isbn) {
     // removesBookFromPastReads
     const loggedInUser = this.state.loggedInUser;
-    axios.delete(`/users/${loggedInUser.fbid}/pastReads/${isbn}`)
+    axios.delete(`/api/users/${loggedInUser.fbid}/pastReads/${isbn}`)
       .then(deleted => {
         const filtered = loggedInUser.pastReads.filter(book => {
           return book._id !== isbn;
@@ -217,6 +217,7 @@ class App extends React.Component {
   }
 
   addBookToFavorites (isbn) {
+    //document.getElementById("addBookToFavoritesButton").classList.add("hide-button")
     // first make sure book is not already in favorites
     for (let i = 0; i < this.state.loggedInUser.favorites.length; i++) {
       if (this.state.loggedInUser.favorites[i]._id === isbn) {
@@ -225,7 +226,7 @@ class App extends React.Component {
       }
     }
     // book is not already in list. Go ahead and add it
-    axios.post(`/users/${this.state.loggedInUser.fbid}/favorites/${isbn}`)
+    axios.post(`/api/users/${this.state.loggedInUser.fbid}/favorites/${isbn}`)
       .then(book => {
         const newState = Object.assign({}, this.state.loggedInUser);
         newState.favorites = newState.favorites.concat(book.data);
@@ -237,7 +238,7 @@ class App extends React.Component {
 
   // function to increase a users book read total
   increaseBookCount () {
-    axios.post(`/users/${this.state.loggedInUser.fbid}/count`)
+    axios.post(`/api/users/${this.state.loggedInUser.fbid}/count`)
       .then(res => {
         console.log('res: ', res);
         let newState = Object.assign({}, this.state.loggedInUser);
@@ -279,7 +280,8 @@ class App extends React.Component {
             addBookToFavorites: this.addBookToFavorites.bind(this),
             makeCurrentBook: this.makeCurrentBook.bind(this),
             addBookToQueue: this.addBookToQueue.bind(this),
-            addBookToPastReads: this.addBookToPastReads.bind(this)
+            addBookToPastReads: this.addBookToPastReads.bind(this),
+            loggedInUser: this.state.loggedInUser
           })
           break;
         case "UserProfile" :
