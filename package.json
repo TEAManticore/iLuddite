@@ -12,7 +12,8 @@
     "start:dev": "nodemon server/app.js",
     "build": "webpack",
     "build:watch": "webpack --watch",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
