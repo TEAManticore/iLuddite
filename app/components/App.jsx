@@ -24,7 +24,8 @@ class App extends React.Component {
           });
           console.log('loggedInUser: ',this.state.loggedInUser)
           var path
-          if (window.location.href === 'http://localhost:3000/#_=_' || window.location.href === 'http://localhost:3000/') {
+          if (window.location.href === 'http://localhost:3000/#_=_' || window.location.href === 'http://localhost:3000/'
+              || window.location.href === 'https://i-luddite.herokuapp.com/#_=_' || window.location.href === 'https://i-luddite.herokuapp.com/') {
             path = `/users/${this.state.loggedInUser.fbid}`;
           } else{
             path = window.location.href
